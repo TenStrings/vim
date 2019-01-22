@@ -31,7 +31,6 @@ set smartcase
 set splitbelow
 set splitright
 
-
 let t:is_transparent = 0
 function! Toggle_transparent()
     if t:is_transparent == 0
@@ -44,3 +43,12 @@ function! Toggle_transparent()
     endif
 endfunction
 nnoremap <C-t> : call Toggle_transparent()<CR>
+
+if has("autocmd")
+  augroup templates
+    autocmd BufNewFile *.sh 0r ~/.vim/templates/skeleton.sh
+  augroup END
+endif
+
+nnoremap ,rcomp :-1read $HOME/.vim/templates/component.jsx<CR>/SkeletonName<CR>vgn
+nnoremap ,sh :-1read $HOME/.vim/templates/skeleton.sh<CR>o<Esc>o
