@@ -4,8 +4,14 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set nocompatible
 set path+=**
 
-syntax on
-filetype plugin indent on
+call plug#begin()
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+call plug#end()
+
+"syntax on
+"filetype plugin indent on
+
 colorscheme atlantic-dark
 
 nnoremap <C-h> <C-w>h
