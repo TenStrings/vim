@@ -7,7 +7,12 @@ set path+=**
 call plug#begin()
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'w0rp/ale'
+Plug 'leshill/vim-json'
 call plug#end()
+
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 0
 
 "syntax on
 "filetype plugin indent on
@@ -19,7 +24,6 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-set ruler
 nnoremap <silent> <C-n> :set relativenumber!<cr>
 
 set timeoutlen=1000 ttimeoutlen=0
@@ -52,3 +56,10 @@ endif
 
 nnoremap ,rcomp :-1read $HOME/.vim/templates/component.jsx<CR>/SkeletonName<CR>vgn
 nnoremap ,sh :-1read $HOME/.vim/templates/skeleton.sh<CR>o<Esc>o
+
+"let timer = timer_start(60000, 'UpdateStatusBar',{'repeat':-1})
+set ruler
+"set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
+"function! UpdateStatusBar(timer)
+"  execute 'let &ro = &ro'
+"endfunction
