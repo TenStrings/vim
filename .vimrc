@@ -35,19 +35,24 @@ au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#source
     \ 'completor': function('asyncomplete#sources#file#completor')
     \ }))
 
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+let g:asyncomplete_smart_completion = 1
+let g:asyncomplete_auto_popup = 1
 
-let g:ale_fixers = {'javascript': ['prettier', 'eslint']}
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<cr>"
+
+let g:ale_fixers = {
+\ 'javascript': ['prettier', 'eslint'],
+\  '*': ['remove_trailing_lines', 'trim_whitespace']
+\}
 let g:ale_linters = {'javascript': ['eslint']}
 let g:ale_fix_on_save = 1
 let g:ale_linters_explicit = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 0
-let g:ale_completion_enabled = 1
 
-"colorscheme atlantic-dark
+colorscheme atlantic-dark
 colorscheme codedark
 
 nnoremap <C-h> <C-w>h
@@ -73,7 +78,7 @@ function! Toggle_transparent()
         highlight NonText ctermbg=none
         let t:is_transparent = 1
     else
-        colorscheme atlantic-dark
+        colorscheme codedark
         let t:is_transparent = 0
     endif
 endfunction
@@ -86,13 +91,11 @@ if has("autocmd")
 endif
 
 nnoremap ,rcomp :-1read $HOME/.vim/templates/component.jsx<CR>/SkeletonName<CR>vgn
+nnoremap ,jest :-1read $HOME/.vim/templates/component.test.jsx<CR>7j
 nnoremap ,sh :-1read $HOME/.vim/templates/skeleton.sh<CR>o<Esc>o
 nnoremap <C-@> :LspDefinition<CR>
-"nnoremap \jtags :exec "ctags -f ./.git/tags -R . && sed -i -E '/^(if|switch|function|module\.exports|it|describe).+language:js$/d' ./.git/tags"
 
-"let timer = timer_start(60000, 'UpdateStatusBar',{'repeat':-1})
+nmap <silent> ;F <Plug>(ale_previous_wrap)
+nmap <silent> ;f <Plug>(ale_next_wrap)
+
 set ruler
-"set rulerformat=%55(%{strftime('%a\ %b\ %e\ %I:%M\ %p')}\ %5l,%-6(%c%V%)\ %P%)
-"function! UpdateStatusBar(timer)
-"  execute 'let &ro = &ro'
-"endfunction
