@@ -93,7 +93,9 @@ endif
 nnoremap ,rcomp :-1read $HOME/.vim/templates/component.jsx<CR>/SkeletonName<CR>vgn
 nnoremap ,jest :-1read $HOME/.vim/templates/component.test.jsx<CR>7j
 nnoremap ,sh :-1read $HOME/.vim/templates/skeleton.sh<CR>o<Esc>o
-nnoremap <C-@> :LspDefinition<CR>
+nnoremap ;d :LspDefinition<CR>
+nnoremap ;vd :vsplit<CR>:LspDefinition<CR>
+nnoremap ;sd :split<CR>:LspDefinition<CR>
 
 nmap <silent> ;F <Plug>(ale_previous_wrap)
 nmap <silent> ;f <Plug>(ale_next_wrap)
