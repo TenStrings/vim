@@ -63,3 +63,6 @@ set ruler
 "function! UpdateStatusBar(timer)
 "  execute 'let &ro = &ro'
 "endfunction
+
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
