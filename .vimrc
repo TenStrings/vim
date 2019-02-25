@@ -62,7 +62,7 @@ nnoremap <C-l> <C-w>l
 
 nnoremap <silent> <C-n> :set relativenumber!<cr>
 
-set timeoutlen=1000 ttimeoutlen=0
+set timeout timeoutlen=1000 ttimeoutlen=150
 
 set mouse=n
 set ignorecase
@@ -93,9 +93,10 @@ endif
 nnoremap ,rcomp :-1read $HOME/.vim/templates/component.jsx<CR>/SkeletonName<CR>vgn
 nnoremap ,jest :-1read $HOME/.vim/templates/component.test.jsx<CR>7j
 nnoremap ,sh :-1read $HOME/.vim/templates/skeleton.sh<CR>o<Esc>o
-nnoremap ;d :LspDefinition<CR>
-nnoremap ;vd :vsplit<CR>:LspDefinition<CR>
-nnoremap ;sd :split<CR>:LspDefinition<CR>
+autocmd FileType javascript nnoremap ;d :LspDefinition<CR>
+autocmd FileType javascript nnoremap ;vd :vsplit<CR>:LspDefinition<CR>
+autocmd FileType javascript nnoremap ;sd :split<CR>:LspDefinition<CR>
+autocmd FileType javascript nnoremap ;r :LspRename<CR>
 
 nmap <silent> ;F <Plug>(ale_previous_wrap)
 nmap <silent> ;f <Plug>(ale_next_wrap)
