@@ -102,3 +102,6 @@ nmap <silent> ;F <Plug>(ale_previous_wrap)
 nmap <silent> ;f <Plug>(ale_next_wrap)
 
 set ruler
+
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
