@@ -1,3 +1,5 @@
+autocmd BufWritePost .vimrc source %
+
 set nu
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
@@ -17,6 +19,9 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/asyncomplete-file.vim'
+Plug 'cespare/vim-toml'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-notes'
 call plug#end()
 
 if executable('typescript-language-server')
@@ -97,6 +102,8 @@ autocmd FileType javascript nnoremap ;d :LspDefinition<CR>
 autocmd FileType javascript nnoremap ;vd :vsplit<CR>:LspDefinition<CR>
 autocmd FileType javascript nnoremap ;sd :split<CR>:LspDefinition<CR>
 autocmd FileType javascript nnoremap ;r :LspRename<CR>
+
+:command Datetime :put =strftime('%Y/%m/%d %T')<CR>kJ
 
 nmap <silent> ;F <Plug>(ale_previous_wrap)
 nmap <silent> ;f <Plug>(ale_next_wrap)
